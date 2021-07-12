@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
 import androidx.navigation.fragment.findNavController
 
 /**
@@ -17,6 +18,8 @@ class SecondFragment : Fragment() {
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
+
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_second, container, false)
     }
@@ -24,8 +27,13 @@ class SecondFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val data = arguments?.getString(FirstFragment.USERNAME_KEY)?:"Check"
+
+        view.findViewById<TextView>(R.id.textView).text = data
+
         view.findViewById<Button>(R.id.button_second).setOnClickListener {
             findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
+
         }
     }
 }
